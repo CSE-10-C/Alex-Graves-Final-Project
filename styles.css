@@ -1,63 +1,137 @@
-/* Base Styling */
+/* ================================
+   Global Styles
+================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
+    font-family: "Merriweather", serif;
     margin: 0;
-}
-
-/* Navigation Bar */
-nav {
-    background-color: #003366;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    text-align: center;
     padding: 0;
+    background-color: #f7f7f8;
+    color: #222;
+    line-height: 1.7;
+    padding-bottom: 60px;
 }
 
-nav li {
-    display: inline-block;
-    margin: 0 20px;
+h1, h2, h3 {
+    font-weight: 700;
+    color: #1d1d1f;
+    letter-spacing: 0.5px;
+}
+
+/* ================================
+   Navigation Bar
+================================ */
+
+nav {
+    background-color: #ececf1;
+    padding: 15px 25px;
+    display: flex;
+    gap: 30px;
+    border-bottom: 2px solid #d3d3da;
+    position: sticky;
+    top: 0;
+    z-index: 50;
 }
 
 nav a {
-    color: white;
     text-decoration: none;
-    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: 0.25s;
 }
 
-nav a:hover,
+/* Hover glow */
+nav a:hover {
+    background-color: #dcdce5;
+    color: #000;
+}
+
+/* Highlight active page */
 nav a.active {
+    background-color: #4a4a6a;
+    color: white;
+    font-weight: 700;
+}
+
+/* ================================
+   Page Content Layout
+================================ */
+
+body > *:not(nav) {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* ================================
+   Paragraphs & Text
+================================ */
+
+p {
+    font-size: 18px;
+    margin-bottom: 16px;
+}
+
+/* ================================
+   Project Images
+================================ */
+
+img {
+    width: 100%;
+    max-width: 650px;
+    display: block;
+    margin: 15px 0 30px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    transition: 0.3s;
+}
+
+/* Smooth zoom effect on hover */
+img:hover {
+    transform: scale(1.02);
+    border-color: #888;
+}
+
+/* ================================
+   Links
+================================ */
+
+a {
+    color: #333366;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: #000055;
     text-decoration: underline;
 }
 
-/* Header */
-header {
-    text-align: center;
-    padding: 20px;
-}
-
-header h1 {
-    color: #003366;
-}
-
-/* Content Box */
-.content-box {
-    background: white;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-    color: #003366;
-}
+/* ================================
+   Lists
+================================ */
 
 ul {
-    line-height: 1.8;
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+/* ================================
+   Page Transitions
+================================ */
+
+body {
+    animation: fadeIn 0.7s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
