@@ -193,4 +193,13 @@ body.dark-mode section {
     to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Smaller project images */
+.project-image {
+    width: 300px;        /* adjust size here */
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+}
+
 
