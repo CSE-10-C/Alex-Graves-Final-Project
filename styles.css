@@ -203,4 +203,38 @@ body.dark-mode section {
 
 }
 
+/* ================================
+   Hobbies Page Layout
+================================ */
+
+.hobby-row {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 18px;
+  align-items: start;
+  margin: 18px 0;
+}
+
+.hobby-img {
+  width: 100%;
+  max-width: 260px;
+  margin: 0;
+}
+
+.hobby-text h2 {
+  margin-top: 0;
+}
+
+/* Mobile-friendly: stack image above text */
+@media (max-width: 700px) {
+  .hobby-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hobby-img {
+    max-width: 100%;
+  }
+}
+
+
 
