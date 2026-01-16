@@ -1,22 +1,65 @@
 /* ================================
-   Global Styles
+   Global Styles + Smooth Scrolling
 ================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
 
+:root {
+    /* Light mode colors */
+    --bg: #f7f7f8;
+    --text: #222;
+    --heading: #1d1d1f;
+    --nav-bg: #ececf1;
+    --nav-border: #d3d3da;
+    --link: #333366;
+    --link-hover: #000055;
+    --hover-bg: #dcdce5;
+    --active-bg: #4a4a6a;
+    --active-text: #ffffff;
+    --card-border: #cccccc;
+    --img-border: #cccccc;
+    --img-border-hover: #888888;
+    --shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Dark mode colors (toggled by adding .dark-mode to body) */
+body.dark-mode {
+    --bg: #0f1115;
+    --text: #e7e7ea;
+    --heading: #ffffff;
+    --nav-bg: #161a22;
+    --nav-border: #2a3242;
+    --link: #b7c2ff;
+    --link-hover: #dde2ff;
+    --hover-bg: #242b3a;
+    --active-bg: #b7c2ff;
+    --active-text: #0f1115;
+    --card-border: #2a3242;
+    --img-border: #2a3242;
+    --img-border-hover: #515d78;
+    --shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+/* Smooth scrolling (works for links like href="#top") */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Base page */
 body {
     font-family: "Merriweather", serif;
     margin: 0;
-    padding: 0;
-    background-color: #f7f7f8;
-    color: #222;
+    padding: 0 0 60px 0;
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.7;
-    padding-bottom: 60px;
+    animation: fadeIn 0.7s ease-in-out;
 }
 
+/* Headings */
 h1, h2, h3 {
     font-weight: 700;
-    color: #1d1d1f;
+    color: var(--heading);
     letter-spacing: 0.5px;
 }
 
@@ -25,36 +68,56 @@ h1, h2, h3 {
 ================================ */
 
 nav {
-    background-color: #ececf1;
-    padding: 15px 25px;
+    background-color: var(--nav-bg);
+    padding: 14px 18px;
     display: flex;
-    gap: 30px;
-    border-bottom: 2px solid #d3d3da;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 2px solid var(--nav-border);
     position: sticky;
     top: 0;
     z-index: 50;
 }
 
+/* Push toggle button to the right */
+nav .spacer {
+    margin-left: auto;
+}
+
 nav a {
     text-decoration: none;
-    color: #333;
+    color: var(--text);
     font-weight: 600;
     padding: 8px 12px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: 0.25s;
 }
 
-/* Hover glow */
 nav a:hover {
-    background-color: #dcdce5;
-    color: #000;
+    background-color: var(--hover-bg);
 }
 
-/* Highlight active page */
 nav a.active {
-    background-color: #4a4a6a;
-    color: white;
+    background-color: var(--active-bg);
+    color: var(--active-text);
     font-weight: 700;
+}
+
+/* Dark mode toggle button */
+#theme-toggle {
+    border: 1px solid var(--nav-border);
+    background: transparent;
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+#theme-toggle:hover {
+    background-color: var(--hover-bg);
 }
 
 /* ================================
@@ -62,75 +125,69 @@ nav a.active {
 ================================ */
 
 body > *:not(nav) {
-    max-width: 850px;
-    margin: 30px auto;
+    max-width: 880px;
+    margin: 28px auto;
     padding: 0 20px;
 }
 
-/* ================================
-   Paragraphs & Text
-================================ */
-
+/* Paragraphs */
 p {
     font-size: 18px;
     margin-bottom: 16px;
 }
 
-/* ================================
-   Project Images
-================================ */
+/* Links */
+a {
+    color: var(--link);
+    transition: 0.2s;
+}
 
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* Lists */
+ul {
+    font-size: 18px;
+    line-height: 1.7;
+}
+li {
+    margin-bottom: 10px;
+}
+
+/* Images */
 img {
     width: 100%;
     max-width: 650px;
     display: block;
     margin: 15px 0 30px;
-    border-radius: 10px;
-    border: 2px solid #ccc;
+    border-radius: 12px;
+    border: 2px solid var(--img-border);
+    box-shadow: var(--shadow);
     transition: 0.3s;
 }
 
-/* Smooth zoom effect on hover */
 img:hover {
-    transform: scale(1.02);
-    border-color: #888;
+    transform: scale(1.015);
+    border-color: var(--img-border-hover);
 }
 
-/* ================================
-   Links
-================================ */
-
-a {
-    color: #333366;
-    transition: 0.2s;
+/* Optional: “card” look if you wrap content in <section> */
+section {
+    padding: 18px 18px;
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    background: rgba(255,255,255,0.6);
+    box-shadow: var(--shadow);
+    margin-bottom: 18px;
 }
 
-a:hover {
-    color: #000055;
-    text-decoration: underline;
+body.dark-mode section {
+    background: rgba(22,26,34,0.6);
 }
 
-/* ================================
-   Lists
-================================ */
-
-ul {
-    font-size: 18px;
-    line-height: 1.7;
-}
-
-li {
-    margin-bottom: 10px;
-}
-
-/* ================================
-   Page Transitions
-================================ */
-
-body {
-    animation: fadeIn 0.7s ease-in-out;
-}
-
+/* Fade-in animation */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
